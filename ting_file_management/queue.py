@@ -14,6 +14,11 @@ class Queue(AbstractQueue):
     def enqueue(self, value):
         self.__data.append(value)
 
+    def peek(self):
+        if not self.is_empty():
+            return self.__data[0]
+        return None
+
     def dequeue(self):
         if not self.is_empty():
             return self.__data.pop(0)
