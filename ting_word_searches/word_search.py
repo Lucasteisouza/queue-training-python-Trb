@@ -16,4 +16,12 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    existing_word_list = exists_word(word, instance)
+    if len(existing_word_list) > 0:
+        for i in range(0, len(existing_word_list)):
+            occorrencias_atual = existing_word_list[i]["ocorrencias"]
+            for j in range(0, len(occorrencias_atual)):
+                linha_atual = occorrencias_atual[j]["linha"]
+                text_atual = instance.search(i)["linhas_do_arquivo"]
+                occorrencias_atual[j]["conteudo"] = text_atual[linha_atual - 1]
+    return existing_word_list
